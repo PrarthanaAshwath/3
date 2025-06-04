@@ -22,13 +22,13 @@ pipeline
 		stage('Archive')
 		{
 			steps{
-				archiveArtifacts artifacts:'target/*.war',fingerprint:true
+				archiveArtifacts artifacts: 'target/*.war',fingerprint:true
 			}
 		}
 		stage('Deploy')
 		{
 			steps{
-				ansiblePlaybook playbook:'ansible/deploy.yml',inventory:'ansible/hosts.ini'
+				ansiblePlaybook playbook: 'ansible/deploy.yml',inventory:'ansible/hosts.ini'
 			}
 		}
 	}
