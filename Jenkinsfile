@@ -25,12 +25,12 @@ pipeline
 				archiveArtifacts artifacts: 'target/*.war',fingerprint:true
 			}
 		}
-		stage('Deploy')
-		{
-			steps{
-				ansiblePlaybook playbook: 'Ansible/deploy.yml',inventory:'Ansible/hosts.ini'
-			}
+		stage('Deploy') {
+    			steps {
+        			sh 'ansible-playbook -i Ansible/hosts.ini Ansible/deploy.yml'
+    			}
 		}
+
 	}
 }
 		
